@@ -1,0 +1,1 @@
+import ThirtyDays from './app/views/main.js'

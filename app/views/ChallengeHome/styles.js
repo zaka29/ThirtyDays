@@ -17,6 +17,10 @@ const ChallengeHomeStyles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  instructionsButtonText: {
+    textAlign: 'center',
+    color: '#fff',
+  }
 });
 
 export default ChallengeHomeStyles;

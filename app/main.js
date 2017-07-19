@@ -1,36 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, {Component} from 'react';
+import { Provider } from 'react-redux';
+import {createStore, applyMiddleware, compose} from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import {AppRegistry} from 'react-native';
+import AppReducer from './reducers/index.js';
+import ThirtyDaysNavigationState from './navigators/ThirtyDaysNavigator.js';
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
 
-import MainStyles from './views/Main/styles.js';
+class ThirtyDays extends Component {
+    store = createStore (
+        AppReducer,
+        compose(
+            applyMiddleware(
+                thunkMiddleware,
+            )
+        ));
 
-export default class ThirtyDays extends Component {
-  render() {
-    return (
-      <View style={MainStyles.container}>
-        <Text style={MainStyles.welcome}>
-          Welcome to React Native
-        </Text>
-        <Text style={MainStyles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={MainStyles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
+    render () {
+        return(
+            <Provider store={this.store}>
+                <ThirtyDaysNavigationState />
+            </Provider>
+        );
+    }
 }
 
 AppRegistry.registerComponent('ThirtyDays', () => ThirtyDays);
+
+export default ThirtyDays;

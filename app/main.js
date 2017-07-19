@@ -6,19 +6,20 @@
 
 import React, { Component } from 'react';
 import {
+  AppRegistry,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
-import MainStyles from './Main/styles.js';
+import MainStyles from './views/Main/styles.js';
 
 export default class ThirtyDays extends Component {
   render() {
     return (
       <View style={MainStyles.container}>
         <Text style={MainStyles.welcome}>
-          Welcome to React Native!
+          Welcome to React Native
         </Text>
         <Text style={MainStyles.instructions}>
           To get started, edit index.ios.js
@@ -31,7 +32,5 @@ export default class ThirtyDays extends Component {
     );
   }
 }
-
-
 
 AppRegistry.registerComponent('ThirtyDays', () => ThirtyDays);

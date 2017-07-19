@@ -1,1 +1,1 @@
-import ThirtyDays from './app/views/main.js'
+import ThirtyDays from './app/main.js'

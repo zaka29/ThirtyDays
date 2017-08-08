@@ -2,15 +2,16 @@ import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import {StyledText} from './styling/components.js';
 
 const DisplayToday = ({today}) => (
     <View>
         <View>
-            <Text>TODAY</Text>
+            <StyledText>TODAY</StyledText>
         </View>
         <View>
-            <Text>{today}</Text>
+            <StyledText>{today}</StyledText>
         </View>
     </View>
 );

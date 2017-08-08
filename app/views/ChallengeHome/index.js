@@ -15,12 +15,13 @@ class ChallengeHome extends Component {
 
     render() {
 
-        const {dispatch, navigation} = this.props;
+        const { dispatch, navigation, forToday, total } = this.props;
 
         return (
 
             <View style={ChallengeHomeStyles.MainContainer}>
-                <AppHeader total={0} today={0} />
+
+                <AppHeader total={total} today={forToday} />
 
                 <View>
                     <Text style={ChallengeHomeStyles.instructions}>

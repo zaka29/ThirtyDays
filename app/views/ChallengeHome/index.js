@@ -9,13 +9,9 @@ import ChallengeHomeStyles from './styles.js';
 
 class ChallengeHome extends Component {
 
-    static navigationOptions = {
-        title: '30 Days Challenge',
-    };
-
     render() {
 
-        const { dispatch, navigation, forToday, total } = this.props;
+        const { dispatch, forToday, total } = this.props;
 
         return (
 

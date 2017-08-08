@@ -9,6 +9,8 @@ import AddNewChallenge from '../views/AddNewChallenge/index.js'
 export const ThirtyDaysNavigator = StackNavigator({
     Home: { screen: ChallengeHome },
     NewChallenge: { screen: AddNewChallenge },
+}, {
+    headerMode: 'none',
 });
 
 const ThirtyDaysNavigationState = ({ dispatch, navigation }) => (

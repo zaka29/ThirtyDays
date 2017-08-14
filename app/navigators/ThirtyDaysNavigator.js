@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
+import LoginView from '../views/LoginView/index.js';
 import ChallengeHome from '../views/ChallengeHome/index.js'
 import AddNewChallenge from '../views/AddNewChallenge/index.js'
 
 export const ThirtyDaysNavigator = StackNavigator({
+    Login: { screen: LoginView },
     Home: { screen: ChallengeHome },
     NewChallenge: { screen: AddNewChallenge },
 }, {

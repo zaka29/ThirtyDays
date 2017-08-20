@@ -15,8 +15,16 @@ export const onRegisterPasswordChange = (password) => {
     }
 }
 
-export const verifyPasswordMatch = (verifiedPassword) => (dispatch, getState) => {
-    const password = getState().register.password;
+export const onRegisterVerifyPasswordChange = (verifiedPassword) => {
+    return {
+        type: actionTypes.REGISTER_USER_VERIFIED_PASSWORD_CHANGE,
+        verifiedPassword
+    }
+}
+
+export const verifyPasswordMatch = () => (dispatch, getState) => {
+    const { password, verifiedPassword } = getState().registerView;
+
     if (password === verifiedPassword) {
         dispatch({ type: actionTypes.REGISTER_VERIFY_PASSWORD_SUCCESS })
     } else {
@@ -26,16 +34,17 @@ export const verifyPasswordMatch = (verifiedPassword) => (dispatch, getState) =>
 
 export const requestUserCreateAccount = ( password, email) => (dispatch, getState) => {
 
-    const { isPasswordVerified } = getState().register;
+    const { isPasswordVerified } = getState().registerView;
 
     if (isPasswordVerified){
-        dispatch({type: actionTypes.REGISTER_USER_REQUEST});
+        dispatch({type: actionTypes.REGISTER_USER_REQUEST_ACCOUNT_CREATE});
 
         // Implement Create Account here
         ThirtyDaysFirebase.auth().createUserWithEmailAndPassword(email, password).catch(error => {
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
+            debugger
             dispatch({type: actionTypes.REGISTER_USER_REQUEST_SUCCESS});
             // ...
         });

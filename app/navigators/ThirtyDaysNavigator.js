@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
 import LoginView from '../views/LoginView/index.js';
+import RegisterView from '../views/RegisterView/index.js';
 import ChallengeHome from '../views/ChallengeHome/index.js'
 import AddNewChallenge from '../views/AddNewChallenge/index.js'
 
 export const ThirtyDaysNavigator = StackNavigator({
     Login: { screen: LoginView },
+    Register: {screen: RegisterView},
     Home: { screen: ChallengeHome },
     NewChallenge: { screen: AddNewChallenge },
 }, {

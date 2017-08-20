@@ -1,42 +1,69 @@
 import * as actions from './actionTypes.js';
 
 const initialState = {
-    isLoaded: false,
+    isLoading: false,
     email: '',
     password: '',
+    verifiedPassword: '',
+    isPasswordVerified: false,
     user: '',
-    loginSuccess: false,
+    requestSuccess: false,
 }
 
 const reducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case actions.LOGIN_EMAIL_CHANGE:
+        case actions.REGISTER_USER_EMAIL_CHANGE:
 
             return {
                 ...state,
                 email: action.email,
             };
 
-        case actions.LOGIN_PASSWORD_CHANGE:
+        case actions.REGISTER_USER_PASSWORD_CHANGE:
 
             return {
                 ...state,
                 password: action.password,
             };
 
-        case actions.LOGIN_REQUEST_LOGIN:
+        case actions.REGISTER_USER_VERIFIED_PASSWORD_CHANGE:
 
             return {
                 ...state,
+                verifiedPassword: action.verifiedPassword,
             };
 
-        case actions.LOGIN_REQUEST_LOGIN_SUCCESS:
+        case actions.REGISTER_VERIFY_PASSWORD_SUCCESS:
 
             return {
                 ...state,
-                loginSuccess: true,
+                isPasswordVerified: true,
+            };
+
+        case actions.REGISTER_VERIFY_PASSWORD_ERROR:
+
+            return {
+                ...state,
+                isPasswordVerified: false,
+            }
+
+        case actions.REGISTER_USER_REQUEST_ACCOUNT_CREATE:
+
+            return {
+                ...state,
+                isLoading: true,
+                requestSuccess: false,
+            };
+
+        case actions.REGISTER_USER_REQUEST_SUCCESS:
+
+            return {
+                ...state,
+                isLoading: false,
+                requestSuccess: true,
+
             };
 
         default:

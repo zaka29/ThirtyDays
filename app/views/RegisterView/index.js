@@ -11,7 +11,7 @@ class RegisterView extends Component  {
 
     render () {
 
-        const { email, password, user, actions } = this.props;
+        const { email, password, verifiedPassword, isPasswordVerified, actions, isLoading, requestSuccess } = this.props;
 
         return (
             <LoginViewMain>
@@ -20,7 +20,7 @@ class RegisterView extends Component  {
                     <StyledText>User Email</StyledText>
                     <StyledTextInput
                         value={email}
-                        onChangeText={(text) => {actions.onEmailChange(text)}}
+                        onChangeText={(text) => {actions.onRegisterEmailChange(text)}}
                         keyboardType="email-address"
                         placeholder="email@email.com"
                         placeholderTextColor="#CACFD2" />
@@ -31,7 +31,10 @@ class RegisterView extends Component  {
                     <StyledText>User Password</StyledText>
                     <StyledTextInput
                         value={password}
-                        onChangeText={(text) => {actions.onPasswordChange(text)}}
+                        onChangeText={(text) => {
+                            actions.onRegisterPasswordChange(text)
+                            actions.verifyPasswordMatch()
+                        }}
                         secureTextEntry={true}
                         placeholder="••••••"
                         placeholderTextColor="#CACFD2" />
@@ -41,8 +44,11 @@ class RegisterView extends Component  {
                 <StyledView>
                     <StyledText>Verify Password</StyledText>
                     <StyledTextInput
-                        value={password}
-                        onChangeText={(text) => {actions.onPasswordChange(text)}}
+                        value={verifiedPassword}
+                        onChangeText={(text) => {
+                            actions.onRegisterVerifyPasswordChange(text)
+                            actions.verifyPasswordMatch()
+                        }}
                         secureTextEntry={true}
                         placeholder="••••••"
                         placeholderTextColor="#CACFD2" />
@@ -50,10 +56,16 @@ class RegisterView extends Component  {
                 </StyledView>
 
                 <StyledView>
+                    <StyledText>
+                       Password Verification: { isPasswordVerified?'Verified - OK':'Password should match - Error'}
+                    </StyledText>
+                </StyledView>
+
+                <StyledView>
                     <TouchableHighlight
                         style={{borderRadius: 10}}
                         underlayColor="#1F87DD"
-                        onPress={() => {actions.requestLogin(password, email)}}>
+                        onPress={() => {actions.requestUserCreateAccount(password, email)}}>
 
                         <ButtonViewStyled>
                             <ButtonTextStyled>
@@ -62,6 +74,18 @@ class RegisterView extends Component  {
                         </ButtonViewStyled>
 
                     </TouchableHighlight>
+                    {isLoading &&
+                        <StyledText>
+                            carry on..
+                        </StyledText>
+                    }
+
+                    {requestSuccess &&
+                        <StyledText>
+                            Success..
+                        </StyledText>
+                    }
+
                 </StyledView>
 
             </LoginViewMain>
@@ -70,9 +94,7 @@ class RegisterView extends Component  {
 };
 
 
-RegisterView.PropTypes = {
-    total: PropTypes.number.isRequired,
-}
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -82,14 +104,26 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state, ownProps) => {
 
-    const {email, password, user} = state.loginView;
+    const {email, password, verifiedPassword, isPasswordVerified, isLoading, requestSuccess } = state.registerView;
 
     return {
         ...ownProps,
         email,
         password,
-        user,
+        verifiedPassword,
+        isPasswordVerified,
+        isLoading,
+        requestSuccess,
     }
+}
+
+RegisterView.PropTypes = {
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    verifiedPassword: PropTypes.string.isRequired,
+    isPasswordVerified: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    requestSuccess: PropTypes.bool.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterView);

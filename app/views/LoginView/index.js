@@ -11,7 +11,7 @@ class LoginView extends Component  {
 
     render () {
 
-        const { email, password, user, actions } = this.props;
+        const { email, navigation, dispatch, password, user, actions } = this.props;
 
         return (
             <LoginViewMain>
@@ -54,7 +54,9 @@ class LoginView extends Component  {
                 </StyledView>
 
                 <StyledView>
-                    <TouchableHighlight>
+                    <TouchableHighlight onPress={()=>{
+                        navigation.dispatch( NavigationActions.navigate({routeName: 'Register'}))
+                    }}>
                         <StyledText>Create Account -></StyledText>
                     </TouchableHighlight>
                 </StyledView>

@@ -3224,6 +3224,10 @@ react-native-keyboard-aware-scroll-view@^0.2.9:
   dependencies:
     react-timer-mixin "^0.13.3"
 
+react-native-md-textinput@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-md-textinput/-/react-native-md-textinput-2.0.4.tgz#9f81cff16ceba0bc595fc58ed1239bd13a4023a8"
+
 react-native-tab-view@^0.0.65:
   version "0.0.65"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.65.tgz#b685ea3081ff7c96486cd997361026c407302c59"

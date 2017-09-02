@@ -48,7 +48,7 @@ export const AppHeadingText = styled.Text`
 `;
 
 export const StartViewButtons = styled.View`
-    padding:20px 20px;
+    padding:20px 40px;
     background-color: ${AppColors.main.mountainSlope}
     justify-content: center;
 `;

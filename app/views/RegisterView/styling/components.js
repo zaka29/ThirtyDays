@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 import AppColors from '../../../styles/AppColor.js'
 
-export const LoginViewMain = styled.View`
-    padding-top:100px;
+export const LoginViewMain = styled.ScrollView`
+    padding-top:80px;
     height:100%;
     background-color:${AppColors.main.turquoiseDark};
 `;
@@ -23,19 +23,35 @@ export const AppHeadingText = styled.Text`
 `;
 
 export const InputFieldsContainer = styled.View`
-    padding:15px;
+    padding:10px 40px;
 `;
 
 export const InputFieldGroup = styled.View`
-    margin-bottom:15px;
+    margin-bottom:0;
 `;
 
 export const ButtonsContainer = styled.View`
-    padding:20px 20px;
-    background-color: ${AppColors.main.mountainSlope}
+    padding:20px 40px;
+    background-color: ${AppColors.main.turquoiseDark}
     justify-content: center;
 `;
 
+export  const TextDelimiterContainer = styled.View`
+    padding:0px 0 15px 0;
+`;
+
+export const DelimiterText = styled.Text`
+       font-size:18px;
+       color: ${AppColors.main.oceanBlue};
+       text-align: center;
+`;
+
+export const LinkText = styled.Text`
+    margin-top:10px;
+    font-size:16px;
+    color: ${AppColors.main.oceanBlue};
+    text-align: center;
+`;
 // move to common reusable styled components
 export const AppButtonTouchableHighLight = styled.TouchableHighlight`
     border-radius:3px;
@@ -82,24 +98,8 @@ export const AppButtonIcon = styled.Text`
 `;
 
 
-export const StyledTextInput = styled.TextInput`
-    color: #89A6AC;
-    font-size: 14px;
-`;
+
 
 export const StyledText = styled.Text`
   color: palevioletred;
-`;
-
-export const ButtonViewStyled = styled.View`
-    padding: 10px;
-    backgroundColor:#2EA0FE;
-    borderWidth: 1px;
-    borderRadius: 10px;
-    borderColor:#1F87DD;
-`;
-
-export const ButtonTextStyled = styled.Text`
-    text-align: center;
-    color: #fff;
 `;

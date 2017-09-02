@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { View, InputText, TouchableHighlight, } from 'react-native';
+import TextField from 'react-native-md-textinput';
+
 import { NavigationActions} from 'react-navigation';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
-import { LoginViewMain, InputFieldsContainer, StyledText, StyledTextInput, ButtonsContainer, AppButtonTouchableHighLight, AppButton, AppButtonFacebook, AppButtonText, AppButtonIcon, AppHeading, AppHeadingText, InputFieldGroup } from './styling/components.js';
+import { LoginViewMain, InputFieldsContainer, StyledText, TextDelimiterContainer, DelimiterText, ButtonsContainer, AppButtonTouchableHighLight, AppButton, AppButtonFacebook, AppButtonText, AppButtonIcon, AppHeading, AppHeadingText, InputFieldGroup, LinkText } from './styling/components.js';
 
 import AppColors from '../../styles/AppColor.js'
 import * as actions from './actions.js';
@@ -28,39 +30,45 @@ class RegisterView extends Component  {
                 <InputFieldsContainer>
 
                     <InputFieldGroup>
-                        <StyledText>User Email</StyledText>
-                        <StyledTextInput
+                        <TextField
+                            label={'Email'}
                             value={email}
                             onChangeText={(text) => {actions.onRegisterEmailChange(text)}}
+                            highlightColor={AppColors.ui.brown}
+                            labelColor={AppColors.main.oceanBlue}
+                            borderColor={AppColors.main.oceanBlue}
                             keyboardType="email-address"
-                            placeholder="email@email.com"
-                            placeholderTextColor="#CACFD2" />
+                        />
                     </InputFieldGroup>
 
                     <InputFieldGroup>
-                        <StyledText>User Password</StyledText>
-                        <StyledTextInput
+                        <TextField
+                            label={'Password'}
                             value={password}
                             onChangeText={(text) => {
                                 actions.onRegisterPasswordChange(text)
                                 actions.verifyPasswordMatch()
                             }}
+                            highlightColor={AppColors.ui.brown}
+                            labelColor={AppColors.main.oceanBlue}
+                            borderColor={AppColors.main.oceanBlue}
                             secureTextEntry={true}
-                            placeholder="••••••"
-                            placeholderTextColor="#CACFD2" />
+                        />
                     </InputFieldGroup>
 
                     <InputFieldGroup>
-                        <StyledText>Verify Password</StyledText>
-                        <StyledTextInput
+                        <TextField
+                            label={'Verify Password'}
                             value={verifiedPassword}
                             onChangeText={(text) => {
                                 actions.onRegisterVerifyPasswordChange(text)
                                 actions.verifyPasswordMatch()
                             }}
+                            highlightColor={AppColors.ui.brown}
+                            labelColor={AppColors.main.oceanBlue}
+                            borderColor={AppColors.main.oceanBlue}
                             secureTextEntry={true}
-                            placeholder="••••••"
-                            placeholderTextColor="#CACFD2" />
+                        />
                     </InputFieldGroup>
 
                 </InputFieldsContainer>
@@ -74,7 +82,11 @@ class RegisterView extends Component  {
                             </AppButtonText>
                         </AppButton>
                     </AppButtonTouchableHighLight>
-
+                    <TextDelimiterContainer>
+                        <DelimiterText>
+                            OR
+                        </DelimiterText>
+                    </TextDelimiterContainer>
                     <AppButtonFacebook>
                         <AppButtonIcon>
                             <FontAwesome>{Icons.facebook}</FontAwesome>
@@ -83,16 +95,13 @@ class RegisterView extends Component  {
                             CONTINUE WITH FACEBOOK
                         </AppButtonText>
                     </AppButtonFacebook>
-
                 </ButtonsContainer>
 
-
-
-                <InputFieldGroup>
-                    <StyledText>
-                       Password Verification: { isPasswordVerified?'Verified - OK':'Password should match - Error'}
-                    </StyledText>
-                </InputFieldGroup>
+                <TextDelimiterContainer>
+                    <LinkText>
+                        BACK
+                    </LinkText>
+                </TextDelimiterContainer>
 
                 <InputFieldGroup>
 

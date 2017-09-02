@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { View, InputText, TouchableHighlight, Image } from 'react-native';
+import FontAwesome, { Icons } from 'react-native-fontawesome';
+import { NavigationActions} from 'react-navigation';
+
+import AppColors from '../../styles/AppColor.js'
 import Images from '../../assets/images.js';
-import {StartViewMain, ContainerLogo, Logo, LogoImage, MountainsContainer, MountainsImage, AppHeading, AppHeadingText, StartViewButtons, AppButtonFacebook, AppButton, AppButtonText } from './styling/components.js';
+import {StartViewMain, ContainerLogo, Logo, LogoImage, MountainsContainer, MountainsImage, AppHeading, AppHeadingText, StartViewButtons, AppButtonFacebook, AppButton, AppButtonText, AppButtonIcon, AppButtonTouchableHighLight } from './styling/components.js';
 
 import * as actions from './actions.js';
 
 class StartView extends Component  {
 
     render () {
+        const {navigation} = this.props;
 
         return (
             <StartViewMain>
@@ -19,12 +24,11 @@ class StartView extends Component  {
                     <Logo>
                         <LogoImage source={Images.ThirtyDaysLogo} />
                     </Logo>
-
-                    <MountainsContainer>
-                        <MountainsImage source={Images.MountainRange} />
-                    </MountainsContainer>
-
                 </ContainerLogo>
+
+                <MountainsContainer>
+                    <MountainsImage source={Images.MountainRange} />
+                </MountainsContainer>
 
                 <AppHeading>
                     <AppHeadingText>
@@ -33,14 +37,21 @@ class StartView extends Component  {
                 </AppHeading>
 
                 <StartViewButtons>
-                    <AppButton orange>
-                        <AppButtonText>
-                            SIGN UP WITH EMAIL
-                        </AppButtonText>
-                    </AppButton>
+
+                    <AppButtonTouchableHighLight underlayColor={AppColors.ui.brown} activeOpacity={0.8} onPress={()=>{
+                        navigation.dispatch( NavigationActions.navigate({routeName: 'Register'}))
+                    }}>
+                        <AppButton orange>
+                            <AppButtonText>
+                                SIGN UP WITH EMAIL
+                            </AppButtonText>
+                        </AppButton>
+                    </AppButtonTouchableHighLight>
 
                     <AppButtonFacebook>
-
+                        <AppButtonIcon>
+                            <FontAwesome>{Icons.facebook}</FontAwesome>
+                        </AppButtonIcon>
                         <AppButtonText>
                             CONTINUE WITH FACEBOOK
                         </AppButtonText>

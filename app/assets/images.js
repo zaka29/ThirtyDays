@@ -1,5 +1,5 @@
 const Images = {
-    ThirtyDaysLogo: require('./images/Laurel_wreath5.png'),
+    ThirtyDaysLogo: require('./images/Laurel_wreath.png'),
     MountainRange: require('./images/MountainRange_Fill.png'),
 }
 

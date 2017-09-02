@@ -4,7 +4,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { View, InputText, TouchableHighlight, } from 'react-native';
 import { NavigationActions} from 'react-navigation';
-import { LoginViewMain, StyledView, StyledText, StyledTextInput, ButtonViewStyled, ButtonTextStyled } from './styling/components.js';
+import FontAwesome, { Icons } from 'react-native-fontawesome';
+import { LoginViewMain, InputFieldsContainer, StyledText, StyledTextInput, ButtonsContainer, AppButtonTouchableHighLight, AppButton, AppButtonFacebook, AppButtonText, AppButtonIcon, AppHeading, AppHeadingText, InputFieldGroup } from './styling/components.js';
+
+import AppColors from '../../styles/AppColor.js'
 import * as actions from './actions.js';
 
 class RegisterView extends Component  {
@@ -16,64 +19,83 @@ class RegisterView extends Component  {
         return (
             <LoginViewMain>
 
-                <StyledView>
-                    <StyledText>User Email</StyledText>
-                    <StyledTextInput
-                        value={email}
-                        onChangeText={(text) => {actions.onRegisterEmailChange(text)}}
-                        keyboardType="email-address"
-                        placeholder="email@email.com"
-                        placeholderTextColor="#CACFD2" />
+                <AppHeading>
+                    <AppHeadingText>
+                        SIGN UP
+                    </AppHeadingText>
+                </AppHeading>
 
-                </StyledView>
+                <InputFieldsContainer>
 
-                <StyledView>
-                    <StyledText>User Password</StyledText>
-                    <StyledTextInput
-                        value={password}
-                        onChangeText={(text) => {
-                            actions.onRegisterPasswordChange(text)
-                            actions.verifyPasswordMatch()
-                        }}
-                        secureTextEntry={true}
-                        placeholder="••••••"
-                        placeholderTextColor="#CACFD2" />
+                    <InputFieldGroup>
+                        <StyledText>User Email</StyledText>
+                        <StyledTextInput
+                            value={email}
+                            onChangeText={(text) => {actions.onRegisterEmailChange(text)}}
+                            keyboardType="email-address"
+                            placeholder="email@email.com"
+                            placeholderTextColor="#CACFD2" />
+                    </InputFieldGroup>
 
-                </StyledView>
+                    <InputFieldGroup>
+                        <StyledText>User Password</StyledText>
+                        <StyledTextInput
+                            value={password}
+                            onChangeText={(text) => {
+                                actions.onRegisterPasswordChange(text)
+                                actions.verifyPasswordMatch()
+                            }}
+                            secureTextEntry={true}
+                            placeholder="••••••"
+                            placeholderTextColor="#CACFD2" />
+                    </InputFieldGroup>
 
-                <StyledView>
-                    <StyledText>Verify Password</StyledText>
-                    <StyledTextInput
-                        value={verifiedPassword}
-                        onChangeText={(text) => {
-                            actions.onRegisterVerifyPasswordChange(text)
-                            actions.verifyPasswordMatch()
-                        }}
-                        secureTextEntry={true}
-                        placeholder="••••••"
-                        placeholderTextColor="#CACFD2" />
+                    <InputFieldGroup>
+                        <StyledText>Verify Password</StyledText>
+                        <StyledTextInput
+                            value={verifiedPassword}
+                            onChangeText={(text) => {
+                                actions.onRegisterVerifyPasswordChange(text)
+                                actions.verifyPasswordMatch()
+                            }}
+                            secureTextEntry={true}
+                            placeholder="••••••"
+                            placeholderTextColor="#CACFD2" />
+                    </InputFieldGroup>
 
-                </StyledView>
+                </InputFieldsContainer>
 
-                <StyledView>
+                <ButtonsContainer>
+
+                    <AppButtonTouchableHighLight underlayColor={AppColors.ui.brown} activeOpacity={0.8} onPress={() => {actions.requestUserCreateAccount(password, email)}}>
+                        <AppButton orange>
+                            <AppButtonText>
+                                SIGN UP
+                            </AppButtonText>
+                        </AppButton>
+                    </AppButtonTouchableHighLight>
+
+                    <AppButtonFacebook>
+                        <AppButtonIcon>
+                            <FontAwesome>{Icons.facebook}</FontAwesome>
+                        </AppButtonIcon>
+                        <AppButtonText>
+                            CONTINUE WITH FACEBOOK
+                        </AppButtonText>
+                    </AppButtonFacebook>
+
+                </ButtonsContainer>
+
+
+
+                <InputFieldGroup>
                     <StyledText>
                        Password Verification: { isPasswordVerified?'Verified - OK':'Password should match - Error'}
                     </StyledText>
-                </StyledView>
+                </InputFieldGroup>
 
-                <StyledView>
-                    <TouchableHighlight
-                        style={{borderRadius: 10}}
-                        underlayColor="#1F87DD"
-                        onPress={() => {actions.requestUserCreateAccount(password, email)}}>
+                <InputFieldGroup>
 
-                        <ButtonViewStyled>
-                            <ButtonTextStyled>
-                                Sign In
-                            </ButtonTextStyled>
-                        </ButtonViewStyled>
-
-                    </TouchableHighlight>
                     {isLoading &&
                         <StyledText>
                             carry on..
@@ -86,7 +108,7 @@ class RegisterView extends Component  {
                         </StyledText>
                     }
 
-                </StyledView>
+                </InputFieldGroup>
 
             </LoginViewMain>
         )

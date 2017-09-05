@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import AppColors from '../../../styles/AppColor.js'
 
-export const LoginViewMain = styled.ScrollView`
+export const RegisterViewMain = styled.ScrollView`
     padding-top:80px;
     height:100%;
     background-color:${AppColors.main.turquoiseDark};

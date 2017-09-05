@@ -3,64 +3,88 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { View, InputText, TouchableHighlight, } from 'react-native';
+import TextField from 'react-native-md-textinput';
 import { NavigationActions} from 'react-navigation';
-import { LoginViewMain, StyledView, StyledText, StyledTextInput, ButtonViewStyled, ButtonTextStyled } from './styling/components.js';
+import FontAwesome, { Icons } from 'react-native-fontawesome';
+
+import { LoginViewMain, AppHeading, AppHeadingText, InputFieldsContainer, InputFieldGroup, ButtonsContainer, AppButtonTouchableHighLight, AppButton, AppButtonText, AppButtonFacebook, AppButtonIcon, TextDelimiterContainer, DelimiterText, LinkTextTouchableHighlight, LinkText } from './styling/components.js';
+import AppColors from '../../styles/AppColor.js'
 import * as actions from './actions.js';
 
 class LoginView extends Component  {
 
     render () {
 
-        const { email, navigation, dispatch, password, user, actions } = this.props;
+        const { email, navigation, password, actions } = this.props;
 
         return (
             <LoginViewMain>
 
-                <StyledView>
-                    <StyledText>User Name</StyledText>
-                    <StyledTextInput
-                        value={email}
-                        onChangeText={(text) => {actions.onEmailChange(text)}}
-                        keyboardType="email-address"
-                        placeholder="email@email.com"
-                        placeholderTextColor="#CACFD2" />
+                <AppHeading>
+                    <AppHeadingText>
+                        LOG IN
+                    </AppHeadingText>
+                </AppHeading>
 
-                </StyledView>
+                <InputFieldsContainer>
+                    <InputFieldGroup>
+                        <TextField
+                            label={'Email'}
+                            value={email}
+                            onChangeText={(text) => {actions.onEmailChange(text)}}
+                            highlightColor={AppColors.ui.brown}
+                            labelColor={AppColors.main.oceanBlue}
+                            borderColor={AppColors.main.oceanBlue}
+                            keyboardType="email-address"
+                            placeholderTextColor="#CACFD2" />
+                    </InputFieldGroup>
 
-                <StyledView>
-                    <StyledText>User Password</StyledText>
-                    <StyledTextInput
-                        value={password}
-                        onChangeText={(text) => {actions.onPasswordChange(text)}}
-                        secureTextEntry={true}
-                        placeholder="••••••"
-                        placeholderTextColor="#CACFD2" />
+                    <InputFieldGroup>
+                        <TextField
+                            label={'Password'}
+                            value={password}
+                            onChangeText={(text) => {actions.onPasswordChange(text)}}
+                            highlightColor={AppColors.ui.brown}
+                            labelColor={AppColors.main.oceanBlue}
+                            borderColor={AppColors.main.oceanBlue}
+                            secureTextEntry={true}
+                            placeholderTextColor="#CACFD2" />
+                    </InputFieldGroup>
+                </InputFieldsContainer>
 
-                </StyledView>
-
-                <StyledView>
-                    <TouchableHighlight
-                        style={{borderRadius: 10}}
-                        underlayColor="#1F87DD"
-                        onPress={() => {actions.requestLogin(password, email)}}>
-
-                        <ButtonViewStyled>
-                            <ButtonTextStyled>
+                <ButtonsContainer>
+                    <AppButtonTouchableHighLight underlayColor={AppColors.ui.brown} activeOpacity={0.8} onPress={() => {actions.requestLogin(password, email)}}>
+                        <AppButton orange>
+                            <AppButtonText>
                                 LOG IN
-                            </ButtonTextStyled>
-                        </ButtonViewStyled>
+                            </AppButtonText>
+                        </AppButton>
+                    </AppButtonTouchableHighLight>
 
-                    </TouchableHighlight>
-                </StyledView>
+                    <TextDelimiterContainer>
+                        <DelimiterText>
+                            OR
+                        </DelimiterText>
+                    </TextDelimiterContainer>
 
-                <StyledView>
-                    <TouchableHighlight onPress={()=>{
+                    <AppButtonFacebook>
+                        <AppButtonIcon>
+                            <FontAwesome>{Icons.facebook}</FontAwesome>
+                        </AppButtonIcon>
+                        <AppButtonText>
+                            CONTINUE WITH FACEBOOK
+                        </AppButtonText>
+                    </AppButtonFacebook>
+
+                </ButtonsContainer>
+
+                <TextDelimiterContainer>
+                    <LinkTextTouchableHighlight underlayColor={AppColors.main.turquoiseDark} activeOpacity={.9} onPress={()=>{
                         navigation.dispatch( NavigationActions.navigate({routeName: 'Register'}))
                     }}>
-                        <StyledText>Create Account -></StyledText>
-                    </TouchableHighlight>
-                </StyledView>
-
+                        <LinkText> Create Account </LinkText>
+                    </LinkTextTouchableHighlight>
+                </TextDelimiterContainer>
 
             </LoginViewMain>
         )

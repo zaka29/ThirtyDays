@@ -7,7 +7,7 @@ import TextField from 'react-native-md-textinput';
 
 import { NavigationActions} from 'react-navigation';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
-import { LoginViewMain, InputFieldsContainer, StyledText, TextDelimiterContainer, DelimiterText, ButtonsContainer, AppButtonTouchableHighLight, AppButton, AppButtonFacebook, AppButtonText, AppButtonIcon, AppHeading, AppHeadingText, InputFieldGroup, LinkText, LinkTextTouchableHighlight } from './styling/components.js';
+import { RegisterViewMain, InputFieldsContainer, StyledText, TextDelimiterContainer, DelimiterText, ButtonsContainer, AppButtonTouchableHighLight, AppButton, AppButtonFacebook, AppButtonText, AppButtonIcon, AppHeading, AppHeadingText, InputFieldGroup, LinkText, LinkTextTouchableHighlight } from './styling/components.js';
 
 import AppColors from '../../styles/AppColor.js'
 import * as actions from './actions.js';
@@ -19,7 +19,7 @@ class RegisterView extends Component  {
         const { email, password, verifiedPassword, isPasswordVerified, actions, isLoading, requestSuccess, navigation } = this.props;
 
         return (
-            <LoginViewMain>
+            <RegisterViewMain>
 
                 <AppHeading>
                     <AppHeadingText>
@@ -82,6 +82,7 @@ class RegisterView extends Component  {
                             </AppButtonText>
                         </AppButton>
                     </AppButtonTouchableHighLight>
+
                     <TextDelimiterContainer>
                         <DelimiterText>
                             OR
@@ -121,7 +122,7 @@ class RegisterView extends Component  {
 
                 </InputFieldGroup>
 
-            </LoginViewMain>
+            </RegisterViewMain>
         )
     }
 };

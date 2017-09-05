@@ -51,6 +51,7 @@ export const StartViewButtons = styled.View`
     padding:20px 40px;
     background-color: ${AppColors.main.mountainSlope}
     justify-content: center;
+    flex:1;
 `;
 
 //TO DO: Consider to reusable
@@ -97,3 +98,5 @@ export const AppButtonIcon = styled.Text`
     color:#fff;
     font-size:26px;
 `;
+
+

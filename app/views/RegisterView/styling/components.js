@@ -47,11 +47,15 @@ export const DelimiterText = styled.Text`
 `;
 
 export const LinkText = styled.Text`
-    margin-top:10px;
     font-size:16px;
     color: ${AppColors.main.oceanBlue};
     text-align: center;
 `;
+
+export const LinkTextTouchableHighlight = styled.TouchableHighlight`
+    margin-top:10px;
+`;
+
 // move to common reusable styled components
 export const AppButtonTouchableHighLight = styled.TouchableHighlight`
     border-radius:3px;

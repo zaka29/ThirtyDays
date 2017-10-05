@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import DisplayToday from './DisplayToday.js';
 import DisplayTotal from './DisplayTotal.js';
-import {StyledView} from './styling/components.js';
+import {AppHeaderMain} from './styling/components.js';
 
 const AppHeader = ({total, today, styles}) => (
 
-    <StyledView>
+    <AppHeaderMain>
         <DisplayTotal total={total} />
         <DisplayToday today={today} />
-    </StyledView>
+    </AppHeaderMain>
 );
 
 AppHeader.PropTypes = {

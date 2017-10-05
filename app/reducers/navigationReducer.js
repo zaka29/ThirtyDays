@@ -2,9 +2,9 @@ import { NavigationActions } from 'react-navigation';
 
 import {ThirtyDaysNavigator} from '../navigators/ThirtyDaysNavigator.js';
 
-const firstAction = ThirtyDaysNavigator.router.getActionForPathAndParams('Login');
-const initialState = ThirtyDaysNavigator.router.getStateForAction(firstAction);
 
+const firstAction = ThirtyDaysNavigator.router.getActionForPathAndParams('Splash');
+const initialState = ThirtyDaysNavigator.router.getStateForAction(firstAction);
 
 const reducer = (state = initialState, action) => {
     const nextState = ThirtyDaysNavigator.router.getStateForAction(action, state);

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
+import SplashView from '../views/Splash/index.js';
 import StartView from '../views/StartView/index.js';
 import LoginView from '../views/LoginView/index.js';
 import RegisterView from '../views/RegisterView/index.js';
@@ -10,6 +11,7 @@ import ChallengeHome from '../views/ChallengeHome/index.js'
 import AddNewChallenge from '../views/AddNewChallenge/index.js'
 
 export const ThirtyDaysNavigator = StackNavigator({
+    Splash: {screen: SplashView },
     Start: {screen: StartView },
     Login: { screen: LoginView },
     Register: {screen: RegisterView},

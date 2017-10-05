@@ -1,12 +1,12 @@
 import * as actions from './actionTypes.js';
 
 const initialState = {
-    isLoading: false,
     email: '',
     password: '',
+    user: '',
     verifiedPassword: '',
     isPasswordVerified: false,
-    user: '',
+    isLoading: false,
     requestSuccess: false,
 }
 
@@ -63,7 +63,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 requestSuccess: true,
-
             };
 
         default:

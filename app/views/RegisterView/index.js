@@ -19,7 +19,7 @@ class RegisterView extends Component  {
         const { email, password, verifiedPassword, isPasswordVerified, actions, isLoading, requestSuccess, navigation } = this.props;
 
         return (
-            <RegisterViewMain>
+            <RegisterViewMain keyboardShouldPersistTaps="always">
 
                 <AppHeading>
                     <AppHeadingText>
@@ -108,16 +108,16 @@ class RegisterView extends Component  {
 
                 <InputFieldGroup>
 
-                    {isLoading &&
-                        <StyledText>
+                    { isLoading &&
+                        <DelimiterText>
                             carry on..
-                        </StyledText>
+                        </DelimiterText>
                     }
 
-                    {requestSuccess &&
-                        <StyledText>
+                    { requestSuccess &&
+                        <DelimiterText>
                             Success..
-                        </StyledText>
+                        </DelimiterText>
                     }
 
                 </InputFieldGroup>

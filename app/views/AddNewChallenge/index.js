@@ -1,33 +1,44 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {Text, View, TouchableHighlight} from 'react-native';
+import {NavigationActions} from 'react-navigation';
 
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
+import { AddNewChallengeMain, DelimiterText, SectionContainer, AppButton, AppButtonText, AppButtonTouchableHighLight } from './styling/components.js';
 import AddNewChallengeStyles from './styles.js';
 
-export default class AddNewChallenge extends Component {
-  render() {
-    return (
-      <View style={AddNewChallengeStyles.container}>
-        <Text style={AddNewChallengeStyles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={AddNewChallengeStyles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={AddNewChallengeStyles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
+const AddNewChallenge = () => (
+
+    <AddNewChallengeMain>
+        <DelimiterText>
+            Add New Challenge
+        </DelimiterText>
+        <SectionContainer>
+            <AppButtonTouchableHighLight
+                underlayColor={AppColors.ui.brown}
+                activeOpacity={0.8}
+                >
+                <AppButton>
+                    <AppButtonText>
+                        Start New Challenge
+                    </AppButtonText>
+                </AppButton>
+            </AppButtonTouchableHighLight>
+        </SectionContainer>
+    </AddNewChallengeMain>
+);
+
+const mapDispatchToProps = dispatch => {
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        ...ownProps,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddNewChallenge);

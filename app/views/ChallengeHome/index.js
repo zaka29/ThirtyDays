@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import { Text, View, TouchableHighlight } from 'react-native';
 import AppHeader from '../../components/Header/index.js';
 import {NavigationActions} from 'react-navigation';
+
+import {ChallengeHomeMain} from './styling/components';
+
 import ChallengeHomeStyles from './styles.js';
 
 
@@ -15,7 +18,7 @@ class ChallengeHome extends Component {
 
         return (
 
-            <View style={ChallengeHomeStyles.MainContainer}>
+            <ChallengeHomeMain>
 
                 <AppHeader total={total} today={forToday} />
 
@@ -47,7 +50,7 @@ class ChallengeHome extends Component {
                     </View>
                 </TouchableHighlight>
 
-            </View>
+            </ChallengeHomeMain>
         );
     }
 }

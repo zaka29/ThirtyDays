@@ -33,20 +33,17 @@ export const verifyPasswordMatch = () => (dispatch, getState) => {
 }
 
 export const requestUserCreateAccount = ( password, email) => (dispatch, getState) => {
-
     const { isPasswordVerified } = getState().registerView;
-
     if (isPasswordVerified){
         dispatch({type: actionTypes.REGISTER_USER_REQUEST_ACCOUNT_CREATE});
-
-        // Implement Create Account here
-        ThirtyDaysFirebase.auth().createUserWithEmailAndPassword(email, password).catch(error => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            debugger
-            dispatch({type: actionTypes.REGISTER_USER_REQUEST_SUCCESS});
-            // ...
+        ThirtyDaysFirebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((data) => {
+                console.log('response from firebase', data);
+                dispatch({type: actionTypes.REGISTER_USER_REQUEST_SUCCESS});
+            })
+            .catch(error => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
         });
     }
 

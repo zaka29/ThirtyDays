@@ -99,4 +99,25 @@ export const AppButtonIcon = styled.Text`
     font-size:26px;
 `;
 
+export  const TextDelimiterContainer = styled.View`
+    padding:0px 0 15px 0;
+    background-color: ${AppColors.main.mountainSlope};
+`;
+
+export const DelimiterText = styled.Text`
+       font-size:18px;
+       color: ${AppColors.main.oceanBlue};
+       text-align: center;
+`;
+
+export const LinkText = styled.Text`
+    font-size:16px;
+    color: ${AppColors.main.oceanBlue};
+    text-align: center;
+`;
+
+export const LinkTextTouchableHighlight = styled.TouchableHighlight`
+    margin-top:10px;
+`;
+
 

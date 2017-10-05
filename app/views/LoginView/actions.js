@@ -24,6 +24,6 @@ export const requestLogin = ( password, email) => (dispatch, getState) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log('Login Error', errorMessage);
-        dispatch({type: actionTypes.LOGIN_REQUEST_LOGIN_SUCCESS});
+        // dispatch({type: actionTypes.LOGIN_REQUEST_LOGIN_SUCCESS});
     });
 }

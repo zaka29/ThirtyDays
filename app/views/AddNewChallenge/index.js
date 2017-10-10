@@ -4,11 +4,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Text, View, TouchableHighlight} from 'react-native';
 import {NavigationActions} from 'react-navigation';
+import * as actions from './actions.js';
 
 import { AddNewChallengeMain, DelimiterText, SectionContainer, AppButton, AppButtonText, AppButtonTouchableHighLight } from './styling/components.js';
-import AddNewChallengeStyles from './styles.js';
+import AppColors from '../../styles/AppColor.js'
 
-const AddNewChallenge = () => (
+const AddNewChallenge = ({actions}) => (
 
     <AddNewChallengeMain>
         <DelimiterText>
@@ -18,6 +19,7 @@ const AddNewChallenge = () => (
             <AppButtonTouchableHighLight
                 underlayColor={AppColors.ui.brown}
                 activeOpacity={0.8}
+                onPress={() => { actions.createNewChallenge() }}
                 >
                 <AppButton>
                     <AppButtonText>

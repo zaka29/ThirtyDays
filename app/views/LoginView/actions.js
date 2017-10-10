@@ -19,7 +19,7 @@ export const requestLogin = ( password, email) => (dispatch, getState) => {
     dispatch({type: actionTypes.LOGIN_REQUEST_LOGIN});
 
     // Implement Login Auth here
-    ThirtyDaysFirebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    ThirtyDaysFirebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
